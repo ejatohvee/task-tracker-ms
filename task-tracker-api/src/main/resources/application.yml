@@ -1,0 +1,28 @@
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/task-tracker-db
+        username: postgres
+        password: password
+    jpa:
+      hibernate:
+          ddl-auto: validate
+
+jwt:
+    access:
+        lifetime: 10m
+    secret: ${JWT_SECRET}
+
+kafka:
+    bootstrapServers: localhost:29092
+    clientId: task-tracker-api
+    acksMode: all
+    deliveryTimeout: 60s
+    LingerMs: 12_000
+    batchSize: 100_000
+    maxInflightPerConnection: 5
+    enableIdempotence: true
+
+springdoc:
+    api-docs:
+        path: /api-docs

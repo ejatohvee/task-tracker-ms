@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+external:
+  token-url: http://localhost:8080/api/auth/login
+  users-url: http://localhost:8080/api/users
+  tasks-url: http://localhost:8080/api/tasks
+  user:
+    username: ${SCHEDULER_SERVICE_USERNAME}
+    password: ${SCHEDULER_SERVICE_PASSWORD}
+
+spring:
+  data:
+    rest:
+      max-page-size: 20
+
+kafka:
+  bootstrapServers: localhost:29092
+  clientId: task-tracker-api
+  acksMode: all
+  deliveryTimeout: 60s
+  LingerMs: 12_000
+  batchSize: 100_000
+  maxInflightPerConnection: 5
+  enableIdempotence: true
