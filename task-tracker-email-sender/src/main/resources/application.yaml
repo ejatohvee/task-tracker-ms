@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: task-tracker-mail-sender
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 587
+    password: ${MAIL_PASSWORD}
+    username: ${MAIL_USERNAME}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+kafka:
+  consumer:
+    bootstrapServers: localhost:29092
+    groupId: task-tracker-email-sender
+    autoOffsetReset: latest
+    maxPollIntervalMs: 300_000
+    enableAutoCommit: false
+    concurrency: 1
+
+server:
+  port: 8081
